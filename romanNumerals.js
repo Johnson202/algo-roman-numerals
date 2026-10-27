@@ -1,9 +1,29 @@
 function toRomanLazy(num) {
-  return "";
-}
+  const lazyRomanNumerals = { 1000: "M", 500: "D", 100: "C", 50: "L", 10: "X", 5: "V", 1: "I" };
+  let result = "";
+  
+  for (const [value, symbol] of Object.entries(lazyRomanNumerals).reverse()) {
+    while (num >= value) {
+      result += symbol;
+      num -= value;
+    };
+  };
+  
+  return result;
+};
 
 function toRoman(num) {
-  return "";
+  const romanNumerals = { 1000: "M", 900: "CM", 500: "D", 400: "CD", 100: "C", 90: "XC", 50: "L", 40: "XL", 10: "X", 9: "IX", 5: "V", 4: "IV", 1: "I" };
+  let result = "";
+  
+  for (const [value, symbol] of Object.entries(romanNumerals).reverse()) {
+    while (num >= value) {
+      result += symbol;
+      num -= value;
+    };
+  };
+
+  return result;
 }
 
 module.exports = { toRoman, toRomanLazy };
